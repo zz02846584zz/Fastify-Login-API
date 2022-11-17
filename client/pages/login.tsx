@@ -1,11 +1,12 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Login() {
   return (
     <div className="flex">
       <form
         action=""
-        className="mx-auto my-[10vw] px-10 pt-10 pb-24 bg-white rounded-md shadow-xl"
+        className="mx-auto my-[10vw] px-10 pt-10 pb-14 bg-white rounded-md shadow-xl"
       >
         <h1 className="text-center text-2xl font-semibold text-gray-600 pb-5">
           Login
@@ -13,12 +14,12 @@ export default function Login() {
         <input
           type="text"
           placeholder="Username"
-          className="block px-5 py-2 my-1 rounded-md bg-gray-100 outline-none focus:bg-gray-200"
+          className="block px-5 py-2 my-1 rounded-md bg-gray-100 outline-none focus:bg-gray-200 text-gray-500"
         />
         <input
           type="password"
           placeholder="Password"
-          className="block px-5 py-2 my-1 rounded-md bg-gray-100 outline-none focus:bg-gray-200"
+          className="block px-5 py-2 my-1 rounded-md bg-gray-100 outline-none focus:bg-gray-200 text-gray-500"
         />
         <button
           type="submit"
@@ -26,6 +27,12 @@ export default function Login() {
         >
           Login
         </button>
+        <p className="text-sm mt-14 text-center">
+          {"Don't have an account yet? "}{" "}
+          <Link href="/register" className="text-violet-400 hover:underline">
+            Register
+          </Link>
+        </p>
       </form>
     </div>
   );

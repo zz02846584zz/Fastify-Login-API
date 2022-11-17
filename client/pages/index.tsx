@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
-import Login from "../components/Login";
+import Login from "./login";
+import Register from "./register";
 
 export default function Home() {
   const [api, setApi] = useState();
