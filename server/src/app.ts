@@ -37,8 +37,8 @@ async function main() {
   server.register(userRoutes, { prefix: "api/users" });
 
   try {
-    await server.listen({ port: 3000 });
-    console.log("Server ready at http://localhost:3000");
+    await server.listen({ port: 3030 });
+    console.log("Server ready at http://localhost:3030");
   } catch (error) {
     console.error(error);
     process.exit(1);
