@@ -1,5 +1,6 @@
-import Fastify, { FastifyReply, FastifyRequest } from "fastify";
+import Fastify, { fastify, FastifyReply, FastifyRequest } from "fastify";
 import fjwt from "@fastify/jwt";
+import dotenv from "dotenv";
 import userRoutes from "./modules/user/user.route";
 import { userSchemas } from "./modules/user/user.schema";
 
@@ -11,8 +12,10 @@ declare module "fastify" {
   }
 }
 
+dotenv.config();
+
 server.register(fjwt, {
-  secret: "sfLIOPIOPs76g5GHJFGHJghsgs5fFSSDF653da",
+  secret: process.env.SECRET as string,
 });
 
 server.decorate(
@@ -34,11 +37,11 @@ async function main() {
   for (const schema of userSchemas) {
     server.addSchema(schema);
   }
-  server.register(userRoutes, { prefix: "api/users" });
+  server.register(userRoutes);
 
   try {
-    await server.listen({ port: 3030 });
-    console.log("Server ready at http://localhost:3030");
+    await server.listen({ port: process.env.PORT as any });
+    console.log(`Server ready at http://localhost:${process.env.PORT}`);
   } catch (error) {
     console.error(error);
     process.exit(1);
